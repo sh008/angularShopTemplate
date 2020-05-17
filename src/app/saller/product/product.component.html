@@ -1,0 +1,34 @@
+<div class="container-fluid app-holder">
+    <div class="d-flex flex-row">
+        <button class="btn btn-primary btn-sm float-right">
+            افزودن محصول جدید
+            <i class="fa fa-plus mt-1 fa-sm text-white-50"></i>
+        </button>
+        <button class="btn btn-primary btn-sm mr-auto">
+            دریافت لیست محصولات
+            <i class="fa fa-download fa-sm text-white-50"></i>
+        </button>
+    </div>
+    <div class="row mt-2">
+        <div class='col-12'>
+            <div class="card mt-3">
+
+                <div class="card-body">
+                    <h5 class="card-title ">محصولات شما</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">در این قسمت میتوانید محصولات خود را برای فروش قرار دهید
+                    </h6>
+                    <div class="text-center" *ngIf='loadGrid'>
+                        <div class="spinner-border text-primary m-s" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <ag-grid-angular style="width: 500px; height: 500px;" class="ag-theme-alpine" [rowData]="rowData"
+                        [columnDefs]="columnDefs">
+                    </ag-grid-angular>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

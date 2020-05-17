@@ -13,25 +13,29 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PayDashboard",
+            "outputPath": "dist/PayDashboard/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/assets/bootstrap/css/bootstrap.min.css",
-              "src/assets/bootstrap/bootstrap-rtl.css",
               "src/assets/fonts/font-awesome.min.css"
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
-              "src/assets/bootstrap/js/bootstrap.min.js"
+              "src/assets/bootstrap/js/bootstrap.min.js",
+              "src/assets/dashboard/bs-init.js",
+              "src/assets/dashboard/chart.min.js",
+              "src/assets/dashboard/theme.js",
+              "node_modules/sweetalert/dist/sweetalert.min.js"
             ]
           },
           "configurations": {
@@ -47,7 +51,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -124,8 +127,56 @@
               "devServerTarget": "PayDashboard:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/PayDashboard/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "PayDashboard:build",
+            "serverTarget": "PayDashboard:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "PayDashboard:build:production",
+              "serverTarget": "PayDashboard:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "PayDashboard:build:production",
+            "serverTarget": "PayDashboard:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "PayDashboard"
 }

@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: sahel;
+    src: url(assets/sahel-font/Sahel.woff);
+  }
+
+div,a,p,h1,h2,h3,h4,h5,h6,span{
+    font-family: sahel;
+}
+.pointer{
+    cursor: pointer;
+}
+.app-holder{
+    margin-top: 6rem;
+}
+.m-s{
+    margin:2px;
+    margin-right: 10px;
+}
