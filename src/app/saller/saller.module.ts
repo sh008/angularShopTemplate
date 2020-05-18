@@ -7,8 +7,9 @@ import { SideNavComponent } from './_layout/side-nav/side-nav.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 @NgModule({
-  declarations: [SallerComponent, SideNavComponent, HomeComponent, LoginComponent, ProductComponent],
+  declarations: [SallerComponent, SideNavComponent, HomeComponent, LoginComponent, ProductComponent, ProductDetailComponent],
   imports: [
     CommonModule,
     SallerRoutingModule,
