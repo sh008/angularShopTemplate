@@ -178,5 +178,8 @@
       }
     }
   },
-  "defaultProject": "PayDashboard"
+  "defaultProject": "PayDashboard",
+  "cli": {
+    "analytics": "70a2593a-588b-4b66-b306-e3123bfd30be"
+  }
 }
